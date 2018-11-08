@@ -15,11 +15,13 @@ import java.util.Scanner;
 public class FameActivity extends AppCompatActivity {
     private ArrayList<jugador> llista;
 
-    final TextView fameRecord = findViewById(R.id.fame);;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fame);
+        TextView fameRecord = findViewById(R.id.fame);;
+
         llista = new ArrayList<jugador>();
         Collections.sort(llista, new Comparator<jugador>() {
             public int compare(jugador o1, jugador o2) {

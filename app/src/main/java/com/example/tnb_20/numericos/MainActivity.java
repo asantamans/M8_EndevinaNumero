@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), FameActivity.class);
-                startActivityIfNeeded(intent, 0);
+                String insertado = String.valueOf(editText.getText());
+                comprobaNum(insertado,numero);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
@@ -70,18 +70,18 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void comprobaNum(String insertado,int numero) {
         int insertadoConver = Integer.parseInt(insertado);
-
+        ++intento;
         if(insertadoConver == numero){
             mostrarMensaje("Has acertado el numero; reiniciando aplicacion");
             listaPlayers.add(new jugador(intento,"Jugador "+jugadorNumb));
             ++jugadorNumb;
+            intento = 0;
             start();
         }else if(insertadoConver > numero){
-            mostrarMensaje("El número es más pequeño" + insertadoConver);
-            intento = intento + 1;
+            mostrarMensaje("El número es más pequeño    " + insertadoConver);
         }else if(insertadoConver < numero){
-            mostrarMensaje("El número es más grande" + insertadoConver);
-            intento = intento + 1;
+            mostrarMensaje("El número es más grande     " + insertadoConver);
+
         }
     }
     protected void mostrarMensaje(String mensaje) {
