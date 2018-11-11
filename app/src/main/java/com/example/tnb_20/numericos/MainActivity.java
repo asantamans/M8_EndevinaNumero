@@ -2,6 +2,7 @@ package com.example.tnb_20.numericos;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SyncStatusObserver;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,12 +25,12 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     private int intento = 0;
     private int jugadorNumb = 1;
-    public static ArrayList<jugador> listaPlayers = new ArrayList<jugador>();
+    public static ArrayList<jugador> listaPlayers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        listaPlayers = new ArrayList<jugador>();
         start();
 
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         final Button button = findViewById(R.id.button);
         final Button button2 = findViewById(R.id.button2);
         final EditText editText = findViewById(R.id.editText);
+        System.out.println(listaPlayers.size());
         editText.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
