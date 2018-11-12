@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+  <EditText
+      android:id="@+id/editText2"
+      android:layout_width="320dp"
+      android:layout_height="wrap_content"
+      android:layout_x="35dp"
+      android:layout_y="7dp"
+      android:ems="10"
+      android:inputType="textPersonName"
+      android:text="Introdueix el nom de jugador" />
+
+  <EditText
+      android:id="@+id/editText"
+      android:layout_width="300dp"
+      android:layout_height="wrap_content"
+      android:layout_x="44dp"
+      android:layout_y="73dp"
+      android:ems="10"
+      android:inputType="text" />
+
+  <Button
+      android:id="@+id/sendName"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_x="148dp"
+      android:layout_y="135dp"
+      android:text="Guardar" />
+
+</AbsoluteLayout>
