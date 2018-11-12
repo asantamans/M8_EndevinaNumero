@@ -1,5 +1,6 @@
 package com.example.tnb_20.numericos;
 
+import android.content.SyncStatusObserver;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -22,16 +23,13 @@ public class FameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fame);
         TextView fameRecord = findViewById(R.id.fame);;
 
-        llista = new ArrayList<jugador>();
-        Collections.sort(llista, new Comparator<jugador>() {
-            public int compare(jugador o1, jugador o2) {
-                if (o1.getIntents() < o2.getIntents()) return 1;
-                return 0;
+        llista = MainActivity.listaPlayers;
+        Collections.sort(llista);
 
-        }});
         fameRecord.setText((""));
         for (jugador jug : llista) {
-            fameRecord.setText(fameRecord.getText()+jug.getPuntuacio());
+            fameRecord.setText(fameRecord.getText()+jug.getPuntuacio()+"\n");
+
         }
 
 

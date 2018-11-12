@@ -1,6 +1,6 @@
 package com.example.tnb_20.numericos;
 
-public class jugador {
+public class jugador implements Comparable<jugador>{
     private int intents;
     private String nom;
 
@@ -27,5 +27,11 @@ public class jugador {
     }
     public String getPuntuacio() {
         return ""+nom+"--->Intents:"+intents;
+    }
+
+
+    @Override
+    public int compareTo(jugador o) {
+        return this.intents - o.intents;
     }
 }
