@@ -18,19 +18,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    private int intento = 0;
-    private int jugadorNumb = 1;
-    public static ArrayList<jugador> listaPlayers;
+    public static String nomJugador;
+    private int intents = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listaPlayers = new ArrayList<jugador>();
         start();
 
 
@@ -41,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         final Button button = findViewById(R.id.button);
         final Button button2 = findViewById(R.id.button2);
         final EditText editText = findViewById(R.id.editText);
-        System.out.println(listaPlayers.size());
         editText.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -72,12 +70,11 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void comprobaNum(String insertado,int numero) {
         int insertadoConver = Integer.parseInt(insertado);
-        ++intento;
+        ++intents;
         if(insertadoConver == numero){
             mostrarMensaje("Has acertado el numero; reiniciando aplicacion");
-            listaPlayers.add(new jugador(intento,"Jugador "+jugadorNumb));
-            ++jugadorNumb;
-            intento = 0;
+            jugador tmp = new jugador(intents,registrarNom());
+            restart();
             start();
         }else if(insertadoConver > numero){
             mostrarMensaje("El número es más pequeño    " + insertadoConver);
@@ -92,6 +89,42 @@ public class MainActivity extends AppCompatActivity {
         int duracion = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context,cs,duracion);
         toast.show();
+    }
+    private void restart() {
+        intents = 0;
+        nomJugador = "";
+    }
+
+    private String registrarNom(){
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.dialogview);
+        dialog.setTitle("Registrar el nom de Jugador:");
+        dialog.show();
+        Button register = dialog.findViewById(R.id.dialogButo);
+        register.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                EditText textName = dialog.findViewById(R.id.dialogNom);
+                nomJugador = textName.getText().toString();
+                dialog.dismiss();
+            }
+        });
+
+        return nomJugador;
+    }
+    private void escriureJugadorFitxer(jugador j){
+        try {
+            OutputStreamWriter fout =
+                    new OutputStreamWriter(
+                            openFileOutput("regJugadors.txt",Context.MODE_APPEND));
+
+            fout.write(j.getNom() + ":" + j.getIntents());
+            fout.append("\r\n");
+            fout.close();
+
+        } catch (Exception  e) {
+            e.printStackTrace();
+        }
     }
 
 
