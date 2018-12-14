@@ -26,7 +26,7 @@ public class jugador implements Comparable<jugador>{
         return super.toString();
     }
     public String getPuntuacio() {
-        return ""+nom+"--->Intents:"+intents;
+        return "Nom:"+nom+"--->Intents:"+intents;
     }
 
 

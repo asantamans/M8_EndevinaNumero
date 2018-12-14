@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){{
                     String insertado = String.valueOf(editText.getText());
+                    editText.setText("");
                     comprobaNum(insertado,numero);
                     return true;
                 }}
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String insertado = String.valueOf(editText.getText());
+                editText.setText("");
                 comprobaNum(insertado,numero);
             }
         });
@@ -73,7 +75,9 @@ public class MainActivity extends AppCompatActivity {
         ++intents;
         if(insertadoConver == numero){
             mostrarMensaje("Has acertado el numero; reiniciando aplicacion");
-            jugador tmp = new jugador(intents,registrarNom());
+            String nom =  registrarNom();
+            jugador tmp = new jugador(intents,nom);
+            escriureJugadorFitxer(tmp);
             restart();
             start();
         }else if(insertadoConver > numero){
@@ -107,6 +111,18 @@ public class MainActivity extends AppCompatActivity {
                 EditText textName = dialog.findViewById(R.id.dialogNom);
                 nomJugador = textName.getText().toString();
                 dialog.dismiss();
+            }
+        });
+        register.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){{
+                    EditText textName = dialog.findViewById(R.id.dialogNom);
+                    nomJugador = textName.getText().toString();
+                    dialog.dismiss();
+                    return true;
+                }}
+                return false;
             }
         });
 

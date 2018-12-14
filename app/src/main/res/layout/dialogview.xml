@@ -6,17 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <Button
-      android:id="@+id/dialogButo"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginBottom="355dp"
-      android:layout_marginEnd="203dp"
-      android:layout_marginStart="93dp"
-      android:text="Button"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/dialogButo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginEnd="203dp"
+        android:layout_marginBottom="355dp"
+        android:text="Registrar nom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
   <EditText
       android:id="@+id/dialogNom"
