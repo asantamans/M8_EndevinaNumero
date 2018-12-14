@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     protected void start(){
+        nomJugador = registrarNom();
         Random random = new Random();
         final int numero = random.nextInt(100);
         final Button button = findViewById(R.id.button);
@@ -74,16 +75,14 @@ public class MainActivity extends AppCompatActivity {
         int insertadoConver = Integer.parseInt(insertado);
         ++intents;
         if(insertadoConver == numero){
-            mostrarMensaje("Has acertado el numero; reiniciando aplicacion");
-            String nom =  registrarNom();
-            jugador tmp = new jugador(intents,nom);
+            mostrarMensaje("Has encertat el numero, reiniciant aplicació");
+            jugador tmp = new jugador(intents,nomJugador);
             escriureJugadorFitxer(tmp);
-            restart();
             start();
         }else if(insertadoConver > numero){
-            mostrarMensaje("El número es más pequeño    " + insertadoConver);
+            mostrarMensaje("El número es mes petit   " + insertadoConver);
         }else if(insertadoConver < numero){
-            mostrarMensaje("El número es más grande     " + insertadoConver);
+            mostrarMensaje("El número es mes gran   " + insertadoConver);
 
         }
     }
@@ -94,14 +93,12 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(context,cs,duracion);
         toast.show();
     }
-    private void restart() {
-        intents = 0;
-        nomJugador = "";
-    }
+
 
     private String registrarNom(){
         final Dialog dialog = new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.dialogview);
+        dialog.setTitle("Introdueix el nom del jugador");
         dialog.setTitle("Registrar el nom de Jugador:");
         dialog.show();
         Button register = dialog.findViewById(R.id.dialogButo);
